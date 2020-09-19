@@ -2,4 +2,7 @@ from src.inland_simulator import InlandSimulator
 
 inland_simulator = InlandSimulator()
 
-print(inland_simulator.inland_population)
+for i in range(0, 100):
+    inland_simulator.increase_year()
+
+print(inland_simulator)
