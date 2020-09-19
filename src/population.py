@@ -1,4 +1,4 @@
-from individual import Individual
+from src.individual import Individual
 
 class Population():
 
