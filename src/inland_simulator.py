@@ -34,10 +34,11 @@ class InlandSimulator():
             if self.is_dying(self.inland_population.individuals[uid]):
                 individuals_to_remove.append(uid)
         self.inland_population.remove_individuals(individuals_to_remove)
+        current_population_size = len(self.inland_population.individuals)
 
         # Add newborns
         # Newborns are the same amount as deaths
-        for i in range(0, len(individuals_to_remove)):
+        for i in range(0, self.starting_population - current_population_size):
             newborn = self.generate_individual(i)
             self.inland_population.add_individual(newborn)
 
@@ -61,3 +62,6 @@ class InlandSimulator():
 
     def generate_uid(self, number) -> str:
         return f'{self.year}_{number}'
+
+    def get_current_year_population_by_age(self, age: int):
+        return self.inland_population.get_individuals_by_year(self.year - age)

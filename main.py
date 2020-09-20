@@ -1,9 +1,13 @@
-from src.inland_simulator import InlandSimulator
+from src.process import Process
 
-inland_simulator = InlandSimulator()
+process = Process()
 
-for i in range(0, 1000):
-    inland_simulator.increase_year()
+for i in range(0, 100):
+    process.skip_process()
 
-# print(inland_simulator.inland_population.get_current_iq_distribution(True))
-print(inland_simulator.inland_population.get_current_age_distribution(1000, True))
+process.inland.inland_population.get_current_iq_distribution(draw=True)
+
+for i in range(0, 10000):
+    process.execute_process()
+
+process.inland.inland_population.get_current_iq_distribution(draw=True)

@@ -14,6 +14,14 @@ class Population():
         for uid in uids:
             del self.individuals[uid]
 
+    def get_individuals_by_year(self, year: int):
+        individuals = []
+        for uid in self.individuals:
+            if self.individuals[uid].yob == year:
+                individuals.append(self.individuals[uid])
+
+        return individuals
+
     def get_current_iq_distribution(self, draw: bool):
         iqs = {}
         for uid in self.individuals:
