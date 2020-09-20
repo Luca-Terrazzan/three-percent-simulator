@@ -1,5 +1,6 @@
 from random import random
 from numpy.random import normal
+from statistics import stdev, mean
 
 from src.population import Population
 from src.individual import Individual
@@ -13,6 +14,7 @@ class InlandSimulator():
     def __init__(self):
         self.year: int = 0
         self.inland_population: Population = Population()
+        self.current_iq_distribution = self.starting_iq_distribution
 
         self.create_starting_population()
 
@@ -22,11 +24,16 @@ class InlandSimulator():
             self.inland_population.add_individual(ind)
 
     def get_random_iq_from_current_distribution(self) -> int:
-        return normal(*self.starting_iq_distribution)
+        return normal(*self.current_iq_distribution)
 
     def increase_year(self):
         # Increase year counter
         self.year += 1
+
+        # Recalculate iq distribution for new generation
+        iqs = [ind.iq for ind in self.inland_population.individuals.values()]
+        new_iq_mean = mean(iqs)
+        self.current_iq_distribution = (new_iq_mean, 0.15 * new_iq_mean)
 
         # Determine who dies
         individuals_to_remove = []
