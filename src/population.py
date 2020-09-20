@@ -24,7 +24,9 @@ class Population():
                 iqs[rounded_iq] = 1
 
         if draw:
-            plt.plot(iqs)
-            plt.ylabel("IQ")
+            lists = sorted(iqs.items())  # sorted by key, list of tuples
+            x, y = zip(*lists)  # unpack a list of pairs into two tuples
+            plt.plot(x, y)
             plt.show()
+
         return iqs
