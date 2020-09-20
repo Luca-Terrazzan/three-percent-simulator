@@ -30,3 +30,20 @@ class Population():
             plt.show()
 
         return iqs
+
+    def get_current_age_distribution(self, current_year: int, draw: bool):
+        ages = {}
+        for uid in self.individuals:
+            age = current_year - self.individuals[uid].yob
+            if age in ages:
+                ages[age] += 1
+            else:
+                ages[age] = 1
+
+        if draw:
+            lists = sorted(ages.items())  # sorted by key, list of tuples
+            x, y = zip(*lists)  # unpack a list of pairs into two tuples
+            plt.plot(x, y)
+            plt.show()
+
+        return ages
