@@ -24,10 +24,7 @@ class Population():
                 iqs[rounded_iq] = 1
 
         if draw:
-            lists = sorted(iqs.items())  # sorted by key, list of tuples
-            x, y = zip(*lists)  # unpack a list of pairs into two tuples
-            plt.plot(x, y)
-            plt.show()
+            self.draw_distribution(iqs)
 
         return iqs
 
@@ -41,9 +38,12 @@ class Population():
                 ages[age] = 1
 
         if draw:
-            lists = sorted(ages.items())  # sorted by key, list of tuples
-            x, y = zip(*lists)  # unpack a list of pairs into two tuples
-            plt.plot(x, y)
-            plt.show()
+            self.draw_distribution(ages)
 
         return ages
+
+    def draw_distribution(self, distribution):
+        lists = sorted(distribution.items())  # sorted by key, list of tuples
+        x, y = zip(*lists)  # unpack a list of pairs into two tuples
+        plt.plot(x, y)
+        plt.show()
