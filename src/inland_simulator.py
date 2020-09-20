@@ -1,7 +1,9 @@
+from random import random
+from numpy.random import normal
+
 from src.population import Population
 from src.individual import Individual
-from numpy.random import normal
-from random import random
+
 
 class InlandSimulator():
 

@@ -1,5 +1,6 @@
 from src.individual import Individual
 
+
 class Population():
 
     def __init__(self):
